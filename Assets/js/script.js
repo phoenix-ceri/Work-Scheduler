@@ -1,8 +1,8 @@
 $(function ()
 {
 //variables
-  let startTime = 0;
-  let endTime = 24;
+  let startTime = 9;
+  let endTime = 21;
   let mainContainerEl = $('.container-lg');
   let dateTimeEl = $('#currentDay');
   let [currentHour, currentDate] = DateTimeGroup();
