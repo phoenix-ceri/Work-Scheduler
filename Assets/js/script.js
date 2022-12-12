@@ -1,13 +1,12 @@
 $(function ()
 {
 //variables
-  let startTime = 9;
-  let endTime = 21;
-  let mainContainerEl = $('.container-lg');
-  let dateTimeEl = $('#currentDay');
-  let [currentHour, currentDate] = DateTimeGroup();
-
-  dateTimeEl.text(currentDate);
+  let startTime = 9;//starts at 9 am
+  let endTime = 21;//ends at 8pm
+  let mainContainerEl = $('.container-lg');//ref the main container
+  let dateTimeEl = $('#currentDay');//pulls the current day info
+  dateTimeEl.text(currentDate); 
+  let [currentHour, currentDate] = DateTimeGroup();//sets up the date time group 
 
   //functions
   function DateTimeGroup()//shows the Month then the day and then the date
@@ -93,7 +92,7 @@ $(function ()
     return ord + (s[(v - 20) % 10] || s[v] || s[0]);
   }
 
-  for (let i = startTime; i < endTime; i++)
+  for (let i = startTime; i < endTime; i++)//allows the theme changes based on the time
   {
     let hour;
     let meridiem;
@@ -117,7 +116,7 @@ $(function ()
         $("<button>", { "class": "btn saveBtn col-2 col-md-1", "aria-label": "save" }).append(
           $("<i>", { "class": "fas fa-save", "aria-hidden": "true" }))));
   }
-  mainContainerEl.on("click", ".time-block button", function (event)
+  mainContainerEl.on("click", ".time-block button", function (event)// allows user to edit and save the information in the text field
   {
     localStorage.setItem($(this).parent().attr("id"), $(this).parent().children("textArea").val());
     mainContainerEl.prepend($("<div>", { "class": "row entry-msg" }).append($("<p>", 
@@ -128,7 +127,7 @@ $(function ()
       $('.message').remove();
     }, 2500);
   });
-  for (let i = 0; i < localStorage.length; i++)
+  for (let i = 0; i < localStorage.length; i++)//sets the local storage options
   {
     $("#" + localStorage.key(i)).children("textArea").text(localStorage.getItem(localStorage.key(i)));
   }
