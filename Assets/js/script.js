@@ -13,7 +13,7 @@ $(function ()
   function DateTimeGroup()//shows the Month then the day and then the date
   {
     let newDate = dayjs();
-    return [newDate.hour(),getMonth(newDate.month()) + ", " + getDay(newDate.day()) + "  The "+ getDate(newDate.date())];
+    return [newDate.hour(),getDay(newDate.day()) + "  The "+ getDate(newDate.date())+ " Of "+getMonth(newDate.month())];
   }
   function getMonth(month) //picks the month 
   {
@@ -98,7 +98,7 @@ $(function ()
     let hour;
     let meridiem;
     let tense;
-    meridiem = (i >= 12) ? "PM" : "AM";
+    meridiem = (i >= 12) ? " PM" : " AM";
     hour = (i % 12) || 12;
     if (i == (currentHour))
     {
@@ -120,7 +120,9 @@ $(function ()
   mainContainerEl.on("click", ".time-block button", function (event)
   {
     localStorage.setItem($(this).parent().attr("id"), $(this).parent().children("textArea").val());
-    mainContainerEl.prepend($("<div>", { "class": "row entry-msg" }).append($("<p>", { "class": "col-12 message text-center text-primary lead py-2" }).text("Appointment saved to localstorage \u2705")));
+    mainContainerEl.prepend($("<div>", { "class": "row entry-msg" }).append($("<p>", 
+    { "class": "col-12 message text-center text-primary lead py-2" })
+    .text("Appointment saved to localstorage \u2705")));
     setTimeout(function ()
     {
       $('.message').remove();
