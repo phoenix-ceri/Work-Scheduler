@@ -1,8 +1,11 @@
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
+  background-image: url(../Photos/cottage\ 2.jpg);
 }
-
+header{
+  color: beige;
+}
 textarea {
   background: transparent;
   border: none;
