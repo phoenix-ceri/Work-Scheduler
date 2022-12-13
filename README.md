@@ -8,7 +8,7 @@ No Install Required
 
 This Runs Inside Your Browser
 
-![screenshot of website](./Assets/Photos/cottage%202.jpg)
+![screenshot of website](./Assets/Photos/2022-12-12%20(1).png)
 
 https://fifisschedual.netlify.app/
 ## Usage
