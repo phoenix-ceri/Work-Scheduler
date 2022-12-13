@@ -1,20 +1,30 @@
 $(function ()
 {
 //variables
-  let startTime = 9;//starts at 9 am
-  let endTime = 21;//ends at 8pm
-  let mainContainerEl = $('.container-lg');//ref the main container
-  let dateTimeEl = $('#currentDay');//pulls the current day info
-  dateTimeEl.text(currentDate); 
-  let [currentHour, currentDate] = DateTimeGroup();//sets up the date time group 
+
+  //starts at 9 am
+    let start = 9;
+  //ends at 8pm
+    let end = 21;
+  //ref the main container
+    let mainContainerEl = $('.container-lg');
+  //pulls the current day info
+    let dateTimeEl = $('#currentDay');
+  //sets up the date time group 
+    let [Hour, Date] = DateTime(); 
+
+  dateTimeEl.text(Date);
 
   //functions
-  function DateTimeGroup()//shows the Month then the day and then the date
+
+  //shows the Month then the day and then the date
+  function DateTime()
   {
     let newDate = dayjs();
     return [newDate.hour(),getDay(newDate.day()) + "  The "+ getDate(newDate.date())+ " Of "+getMonth(newDate.month())];
   }
-  function getMonth(month) //picks the month 
+  //picks the month 
+  function getMonth(month) 
   {
     switch (month)
     {
@@ -57,7 +67,8 @@ $(function ()
   
     return month;
   }
-  function getDay(day) // picks the day
+  // picks the day
+  function getDay(day) 
   {
     switch (day)
     {
@@ -85,24 +96,25 @@ $(function ()
   
     return day;
   }
-  function getDate(ord) // picks the date and adds the suffix for the corisponding date found this on stackoverflow
+  // picks the date and adds the suffix for the corisponding date found this on stackoverflow
+  function getDate(ord) 
   {
     let s = ['th', 'st', 'nd', 'rd'];
     let v = ord % 100;
     return ord + (s[(v - 20) % 10] || s[v] || s[0]);
   }
-
-  for (let i = startTime; i < endTime; i++)//allows the theme changes based on the time
+//allows the theme changes based on the time
+  for (let i = start; i < end; i++)
   {
     let hour;
     let meridiem;
     let tense;
     meridiem = (i >= 12) ? " PM" : " AM";
     hour = (i % 12) || 12;
-    if (i == (currentHour))
+    if (i == (Hour))
     {
       tense = "present";
-    } else if (i < (currentHour))
+    } else if (i < (Hour))
     {
       tense = "past";
     } else
@@ -116,18 +128,20 @@ $(function ()
         $("<button>", { "class": "btn saveBtn col-2 col-md-1", "aria-label": "save" }).append(
           $("<i>", { "class": "fas fa-save", "aria-hidden": "true" }))));
   }
-  mainContainerEl.on("click", ".time-block button", function (event)// allows user to edit and save the information in the text field
+  // allows user to edit and save the information in the text field
+  mainContainerEl.on("click", ".time-block button", function (event)
   {
     localStorage.setItem($(this).parent().attr("id"), $(this).parent().children("textArea").val());
     mainContainerEl.prepend($("<div>", { "class": "row entry-msg" }).append($("<p>", 
     { "class": "col-12 message text-center text-primary lead py-2" })
-    .text("Appointment saved to localstorage \u2705")));
+    .text("Saved")));
     setTimeout(function ()
     {
       $('.message').remove();
     }, 2500);
   });
-  for (let i = 0; i < localStorage.length; i++)//sets the local storage options
+  //sets the local storage options
+  for (let i = 0; i < localStorage.length; i++)
   {
     $("#" + localStorage.key(i)).children("textArea").text(localStorage.getItem(localStorage.key(i)));
   }
