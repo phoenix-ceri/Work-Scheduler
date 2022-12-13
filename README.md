@@ -7,8 +7,6 @@ This Was Written In CSS HTML And Javascript
 No Install Required 
 
 This Runs Inside Your Browser
-
-<<<<<<< HEAD
 ![screenshot of website](./screen.png)
 
 
