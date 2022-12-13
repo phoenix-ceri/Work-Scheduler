@@ -10,9 +10,7 @@ This Runs Inside Your Browser
 
 <<<<<<< HEAD
 ![screenshot of website](./screen.png)
-=======
-![screenshot of website] (./Assets/Photos/screen.png)
->>>>>>> d6f72e60bfec3b2b8c0856ab9bb894a83287dc47
+
 
 https://fifisschedual.netlify.app/
 ## Usage
